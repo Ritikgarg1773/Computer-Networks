@@ -1,0 +1,24 @@
+/home/ritik/Desktop/CN/Assignment2
+import numpy as np
+import pandas as pd
+
+a = input("Enter the part(b/c) to continue: ")
+print(a)
+if a == "b":
+	data = pd.read_csv("/home/ritik/Desktop/CN/Assignment2/ping2b.txt",nrows = 10,header = None,sep=' |=', engine = 'python')
+elif a == "c":
+	data = pd.read_csv("/home/ritik/Desktop/CN/Assignment2/ping2c.txt",nrows = 10,header = None,sep=' |=', engine='python')
+#print(data)
+else :
+	print("Enter valid choice")
+
+data = data.iloc[1:,[5]].to_numpy()
+#print("SORTED DATA")
+data1 = np.array(sorted(data,key=float))
+#print("Sorted Data")
+print(len(data1))
+print("DATA Latency")
+print("Median: " + str(float(data1[4])))
+print("90 Percentile: " + str(float(data1[8])))
+print("99 Percentile: " + str(float(data1[9])))
+
